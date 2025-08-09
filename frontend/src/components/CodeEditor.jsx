@@ -42,9 +42,9 @@ const CodeEditor = () => {
       </div>
 
       {/* Code Editor */}
-      <div className="h-[80vh] border-1 my-5 py-2 px-2 pl-0 rounded-xl">
+      <div className={"h-[80vh] border-1 my-5 py-2.5 px-0 rounded-xl " + (theme?" ":" bg-[#1e1d1d]")}>
         <Editor
-          height="55vh"
+          height="100%"
           theme={theme ? 'vs' : 'vs-dark'}
           language={language || 'javascript'}
           value={value}
