@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./Header"; 
 import Footer from "./Footer"; 
 import LanguageSelector from "./LanguageSelector";
+import CodeEditor from "./CodeEditor";
 
 
 export default function Debugger() {
@@ -14,11 +15,12 @@ export default function Debugger() {
   return (
     <>
       <Header className="relative"/>
-      <main className="px-20 flex flex-1 justify-center py-5">
-        <div className="flex flex-col max-w-[95vw] flex-1">
-          <LanguageSelector className="" />
-        </div>
+      <main className="px-20 flex flex-1 flex-col justify-center py-5">
         
+        <div className="py-2 max-w-[100vw]">
+          <CodeEditor />
+        </div> 
+
       </main>
       <Footer className="absolute bottom-0 w-full" />
     </>
