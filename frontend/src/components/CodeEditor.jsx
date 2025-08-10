@@ -1,21 +1,28 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import LanguageSelector from './LanguageSelector';
-import { counterContext } from '../context/context';
+import { counterContext, snippetContext } from '../context/context';
+import { CODE_SNIPPETS } from '../constants';
 
 const CodeEditor = () => {
   const editorRef = useRef();
   const [theme, setTheme] = useState(true);
   const [value, setValue] = useState('// some comment');
   const [language] = useContext(counterContext);
-
+  const [snippet, setSnippet] = useState("");
+  
   const toggleTheme = () => setTheme(!theme);
 
   const onMount = (editor) => {
     editorRef.current = editor;
     editor.focus();
   };
+
+  useEffect(() => {
+    setSnippet(CODE_SNIPPETS[language])
+  }, [language])
+  
 
   return (
     <>
@@ -47,7 +54,7 @@ const CodeEditor = () => {
           height="100%"
           theme={theme ? 'vs' : 'vs-dark'}
           language={language || 'javascript'}
-          value={value}
+          value={snippet}   
           onMount={onMount}
           onChange={setValue}
         />

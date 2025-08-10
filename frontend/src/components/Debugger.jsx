@@ -4,19 +4,16 @@ import Header from "./Header";
 import Footer from "./Footer"; 
 import LanguageSelector from "./LanguageSelector";
 import CodeEditor from "./CodeEditor";
-import { counterContext } from "../context/context";
-
+import { counterContext, snippetContext } from "../context/context";
 
 export default function Debugger() {
   const [language, setLanguage] = useState("javascript");
-  const [code, setCode] = useState("// Write your code here");
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
- 
+  const [snippet, setSnippet] = useState("// Write your code here");
   
   return (
     <>
     <counterContext.Provider value={[language, setLanguage]}>
+      <snippetContext.Provider value={{snippet, setSnippet}}> 
 
       <Header className="relative"/>
       <main className="px-20 flex flex-1 flex-col justify-center py-5">
@@ -29,6 +26,7 @@ export default function Debugger() {
 
       </main>
       <Footer className="absolute bottom-0 w-full" />
+      </snippetContext.Provider>
     </counterContext.Provider>
     </>
   );
