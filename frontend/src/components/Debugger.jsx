@@ -1,25 +1,24 @@
-import React from "react"
-import { useState } from "react";
+import React, { useState } from "react"
 import Header from "./Header";
 import Footer from "./Footer";
 import LanguageSelector from "./LanguageSelector";
 import CodeEditor from "./CodeEditor";
-import { counterContext, snippetContext } from "../context/context";
+import { counterContext, themeContext, codeContext } from "../context/context";
 import OutputConsole from "./OutputConsole";
-import { themeContext } from "../context/context";
+
 
 
 export default function Debugger() {
   const [language, setLanguage] = useState("javascript");
-  const [snippet, setSnippet] = useState("// Write your code here");
   const [theme, setTheme] = useState(true);
+  const [value, setValue] = useState("// Write your code here")
 
 
   return (
     <>
       <counterContext.Provider value={[language, setLanguage]}>
-        <snippetContext.Provider value={{ snippet, setSnippet }}>
           <themeContext.Provider value={[theme, setTheme]}>
+            <codeContext.Provider value={[value, setValue]}>
 
 
           <Header className="relative" />
@@ -36,8 +35,8 @@ export default function Debugger() {
 
           </main>
           <Footer className="absolute bottom-0 w-full" />
+          </codeContext.Provider>
           </themeContext.Provider>
-        </snippetContext.Provider>
       </counterContext.Provider>
     </>
   );

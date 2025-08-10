@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import { counterContext, snippetContext } from '../context/context';
+import { counterContext } from '../context/context';
 import { LANGUAGE_VERSIONS } from '../constants';
-import { CODE_SNIPPETS } from '../constants';
+
 
 const LanguageSelector = () => {
   const [selectedValue, setSelectedValue] = useContext(counterContext);

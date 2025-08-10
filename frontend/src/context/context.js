@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
 export const counterContext = createContext([null, () => {}])
-export const snippetContext = createContext([null, () => {}])
-export const themeContext = createContext()
+export const themeContext = createContext([true, () => {}])
+export const codeContext = createContext([null, () => {}])
