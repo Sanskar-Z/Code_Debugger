@@ -23,7 +23,7 @@ const LanguageSelector = () => {
           -- Select an option --
         </option>
         {LANGUAGE_VERSIONS.map((lang) => (
-          <option key={lang} value={lang}>
+          <option key={lang} value={lang} className={lang===selectedValue?"text-blue-500 bg-gray-100":""}>
             {lang}
           </option>
         ))}

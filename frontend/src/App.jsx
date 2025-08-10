@@ -11,10 +11,6 @@ function App() {
       element: <><Home/></>
     },
     {
-      path: "/Features",
-      element: <><Features/></>
-    },
-    {
       path: "/Debugger",
       element: <><Debugger/></>
     },
