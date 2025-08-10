@@ -11,7 +11,7 @@ const LanguageSelector = () => {
   };
 
   return (
-    <div className="w-[30%] max-w-sm bg-gray-100 p-5 rounded-3xl">
+    <div className="max-w-[60%] bg-gray-100 p-5 rounded-3xl">
       <label className="block text-sm font-medium text-gray-700 mb-2">Choose a language:</label>
       <select
         id="language-select"
