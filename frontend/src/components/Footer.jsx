@@ -6,7 +6,7 @@ export default function Footer() {
           <a href="#" className="text-base text-[#60758a]">Privacy Policy</a>
           <a href="#" className="text-base text-[#60758a]">Terms of Service</a>
         </div>
-        <p className="text-base text-[#60758a]">© 2023 Code Debugger. All rights reserved.</p>
+        <p className="text-base text-[#60758a]">© 2025 Code Debugger. All rights reserved.</p>
       </div>
     </footer>
   )

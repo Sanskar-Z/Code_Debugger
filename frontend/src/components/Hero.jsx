@@ -9,7 +9,7 @@ export default function Hero() {
     >
       <div className="text-center flex flex-col gap-2">
         <h1 className="text-4xl font-black text-white tracking-tight">
-          Debug React Apps with Ease
+          Code Debugger React Apps
         </h1>
         <h2 className="text-base font-normal text-white">
           Our debugger simplifies the process of identifying and resolving issues in your React applications, allowing you to focus on building great user experiences.
