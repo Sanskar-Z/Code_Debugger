@@ -22,13 +22,13 @@ export default function Debugger() {
 
 
           <Header className="relative" />
-          <main className="px-15 flex gap-15 py-2 max-w-[100vw]">
-            <div className="w-[50vw]">
+          <main className="px-15 flex gap-15 py-2 max-w-[100vw] bg-[#f8fafc]">
+            <div className="w-[50vw] bg-white p-6 rounded-lg shadow-sm">
               <LanguageSelector />
               <CodeEditor />
             </div>
 
-            <div className="w-[40vw] mt-10.5">
+            <div className="w-[40vw] bg-white p-6 rounded-lg shadow-sm">
               <OutputConsole />
 
             </div>

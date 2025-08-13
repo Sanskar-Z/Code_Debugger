@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="px-40 flex flex-1 justify-center py-5">
+      <main className="px-40 flex flex-col items-center justify-center py-5 bg-gray-100">
         <div className="flex flex-col max-w-[960px] flex-1">
           <Hero />
-          <Features />
         </div>
+        <Features />
       </main>
       <Footer />
     </>

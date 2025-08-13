@@ -13,19 +13,19 @@ const LanguageSelector = () => {
   };
 
   return (
-    <div className="max-w-[60%] bg-gray-100 p-5 rounded-3xl">
+    <div className="p-6 rounded-lg shadow-sm">
       <label className="block text-sm font-medium text-gray-700 mb-2">Choose a language:</label>
       <select
         id="language-select"
         value={selectedValue}
         onChange={handleSelectChange}
-        className="bg-white block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
+        className="pl-3 pr-10 py-2 text-base bg-gray-100 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
       >
         <option value="" disabled> 
           -- Select an option --
         </option>
         {languages.map(([language, version]) => (
-          <option key={language} value={language} className={language===selectedValue?"text-blue-500 bg-gray-100":""}>
+          <option key={language} value={language} className={language===selectedValue?"text-blue-500 bg-gray-200":""}>
             {language} 
           </option>
         ))}

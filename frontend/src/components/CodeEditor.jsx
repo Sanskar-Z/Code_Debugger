@@ -23,7 +23,7 @@ const CodeEditor = (props) => {
     <>
     
       {/* Code Editor */}
-      <div className={"h-[80vh] w-[100%] border-1 my-5 py-2.5 px-0 rounded-xl " + (theme?" ":" bg-[#1e1d1d]")}>
+      <div className={"h-[80vh] w-[100%] border-1 border-gray-200 my-5 py-2.5 px-0 rounded-xl " + (theme?" ":" bg-[#1e1d1d]")}>
         <Editor
           height="100%"
           theme={theme ? 'vs' : 'vs-dark'}
