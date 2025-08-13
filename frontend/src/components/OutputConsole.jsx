@@ -6,11 +6,25 @@ const OutputConsole = () => {
     const [theme, setTheme] = useContext(themeContext);
     const [language] = useContext(counterContext);
     const [value] = useContext(codeContext);
+    const [output, setOutput] = useState(null)
 
     const toggleTheme = () => setTheme(!theme);
 
-    const runCode = async () =>{
-        {console.log(value)}
+    const runCode = async () => {
+        try {
+            const res = await fetch("http://localhost:3000", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ language, value })
+            });
+
+            const text = await res.text();
+            console.log(text)
+            setOutput(text);
+    
+        } catch (err) {
+            console.error("Error running code:", err);
+        }
     }
 
     return (
@@ -39,7 +53,7 @@ const OutputConsole = () => {
 
             {/* Output Console */}
             <div className='h-[80vh] w-[100%] border-1 my-5 py-2.5 px-1.5 rounded-xl'>
-                test    
+                {output? output:`Click on "Run Code" to see the output here`}
             </div>
         </>
     );

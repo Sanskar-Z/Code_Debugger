@@ -10,7 +10,7 @@ import OutputConsole from "./OutputConsole";
 
 export default function Debugger() {
   const [language, setLanguage] = useState("javascript");
-  const [theme, setTheme] = useState(true);
+  const [theme, setTheme] = useState(false);
   const [value, setValue] = useState("// Write your code here")
 
 

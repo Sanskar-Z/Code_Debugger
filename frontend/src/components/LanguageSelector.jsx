@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { counterContext } from '../context/context';
 import { LANGUAGE_VERSIONS } from '../constants';
-
+import { languageVersions } from '../constants';
 
 const LanguageSelector = () => {
   const [selectedValue, setSelectedValue] = useContext(counterContext);
+
+  const languages = Object.entries(languageVersions)
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
@@ -19,12 +21,12 @@ const LanguageSelector = () => {
         onChange={handleSelectChange}
         className="bg-white block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors duration-200"
       >
-        <option value="" disabled>
+        <option value="" disabled> 
           -- Select an option --
         </option>
-        {LANGUAGE_VERSIONS.map((lang) => (
-          <option key={lang} value={lang} className={lang===selectedValue?"text-blue-500 bg-gray-100":""}>
-            {lang}
+        {languages.map(([language, version]) => (
+          <option key={language} value={language} className={language===selectedValue?"text-blue-500 bg-gray-100":""}>
+            {language} 
           </option>
         ))}
       </select>
