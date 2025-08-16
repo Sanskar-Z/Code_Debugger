@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Header from "./Header";
 import Footer from "./Footer";
 import LanguageSelector from "./LanguageSelector";
 import CodeEditor from "./CodeEditor";
-import { counterContext, themeContext, codeContext } from "../context/context";
+import { counterContext, themeContext, codeContext, modeContext } from "../context/context";
 import OutputConsole from "./OutputConsole";
 
 
@@ -12,31 +12,32 @@ export default function Debugger() {
   const [language, setLanguage] = useState("javascript");
   const [theme, setTheme] = useState(false);
   const [value, setValue] = useState("// Write your code here")
+  const [mode, setMode] = useContext(modeContext)
 
 
   return (
     <>
       <counterContext.Provider value={[language, setLanguage]}>
-          <themeContext.Provider value={[theme, setTheme]}>
-            <codeContext.Provider value={[value, setValue]}>
+        <themeContext.Provider value={[theme, setTheme]}>
+          <codeContext.Provider value={[value, setValue]}>
 
+            <Header className="relative" />
+            <main className={"px-15 flex gap-10 py-10 max-w-[100vw] bg-[#f8fafc]" + (mode? " ": " bg-gray-900 text-gray-200")}>
+              <div className={"w-[50vw] px-6 rounded-lg shadow-sm" + (mode?"  bg-white ": " bg-gray-800")}>
+                <LanguageSelector />
+                <CodeEditor />
+              </div>
 
-          <Header className="relative" />
-          <main className="px-15 flex gap-15 py-2 max-w-[100vw] bg-[#f8fafc]">
-            <div className="w-[50vw] bg-white p-6 rounded-lg shadow-sm">
-              <LanguageSelector />
-              <CodeEditor />
-            </div>
+              <div className={"w-[50vw] p-6 rounded-lg shadow-sm" + (mode?"  bg-white ": " bg-gray-800")}>
+                <OutputConsole />
 
-            <div className="w-[40vw] bg-white p-6 rounded-lg shadow-sm">
-              <OutputConsole />
+              </div>
 
-            </div>
+            </main>
+            <Footer className="w-full my-5" />
 
-          </main>
-          <Footer className="absolute bottom-0 w-full" />
           </codeContext.Provider>
-          </themeContext.Provider>
+        </themeContext.Provider>
       </counterContext.Provider>
     </>
   );

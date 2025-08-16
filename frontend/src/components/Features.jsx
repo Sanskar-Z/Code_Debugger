@@ -1,4 +1,6 @@
 import FeatureCard from './FeatureCard'
+import { modeContext } from "../context/context";
+import { useContext } from "react";
 
 const featureData = [
   {
@@ -35,17 +37,19 @@ const featureData = [
 ]
 
 export default function Features() {
+  const [mode, setMode] = useContext(modeContext)
+
   return (
     <section className="flex flex-col gap-10 px-4 py-10">
       <div className="text-center mb-6">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <h2 className={"text-4xl font-bold text-gray-800 mb-4"+ (mode?" ": " text-white")}>
           Key Features
         </h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore the powerful features that make our React debugger a must-have tool for developers.</p>
+        <p class={"text-lg text-gray-600 max-w-3xl mx-auto" + (mode?" ": " text-gray-400")}>Explore the powerful features that make our React debugger a must-have tool for developers.</p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className={"grid md:grid-cols-2 lg:grid-cols-3 gap-8"}>
         {featureData.map((feature, index) => (
-          <FeatureCard key={index} {...feature} />
+          <FeatureCard key={index} {...feature}/>
         ))}
       </div>
     </section>

@@ -1,18 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
-import { themeContext, counterContext, codeContext } from "../context/context";
-import { GrPowerReset } from "react-icons/gr";
+import { themeContext, counterContext, codeContext, modeContext } from "../context/context";
 
 const OutputConsole = () => {
     const [theme, setTheme] = useContext(themeContext);
     const [language] = useContext(counterContext);
     const [value] = useContext(codeContext);
     const [output, setOutput] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
+    const [mode, setMode] = useContext(modeContext)
 
     const toggleTheme = () => setTheme(!theme);
 
     const runCode = async () => {
         try {
+            setIsLoading(true)
             const res = await fetch("http://localhost:3000", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -26,6 +28,9 @@ const OutputConsole = () => {
         } catch (err) {
             console.error("Error running code:", err);
         }
+        finally{
+            setIsLoading(false)
+        }
     }
 
     useEffect(() => {
@@ -38,13 +43,13 @@ const OutputConsole = () => {
         <>
             {/* Buttons */}
             <div className="flex justify-between gap-6 my-2 items-center pt-5">
-                <h6 className='pt-2  p-1 rounded-xl text-[95%]text-sm font-medium text-gray-700'>Output:</h6>
+                <h6 className={'pt-2  p-1 rounded-xl text-[95%]text-sm font-medium ' + (mode?" text-gray-700": " text-gray-100")}>Output:</h6>
                 <div className='flex gap-6 items-center'>
-                    <button className="flex items-center p-2 rounded-full text-gray-600 hover:bg-gray-100 transition-colors">
+                    <button className={"flex items-center p-2 rounded-full  hover:bg-gray-100 transition-colors" + (mode?" text-gray-600": " text-gray-400")}>
                         <span className="material-icons">refresh</span>
                     </button>
-                    <button onClick={runCode} className="h-10 px-4 rounded-lg bg-green-500 active:bg-green-600 text-white text-sm font-bold transform hover:-translate-y-1 hover:scale-105 hover:cursor-pointer transition">
-                        Run Code
+                    <button disabled={isLoading} onClick={runCode} className="h-10 px-4 rounded-lg bg-green-500 active:bg-green-600 text-white text-sm font-bold transform hover:-translate-y-1 hover:scale-105 hover:cursor-pointer transition">
+                        {isLoading ? "Running..." : "Run Code"}
                     </button>
                     <button
                         onClick={toggleTheme}
@@ -63,7 +68,7 @@ const OutputConsole = () => {
             </div>
 
             {/* Output Console */}
-            <div className={'h-[86vh] w-[100%] border-1 border-gray-200 my-5 py-2.5 px-2.5 rounded-xl' + (theme ? " bg-gray-50" : " bg-[#1e1d1d] text-white")}>
+            <div className={'h-[87vh] w-[100%] border-1 border-gray-700 my-5 py-2.5 px-2.5 rounded-xl' + (theme ? " bg-gray-50" : " bg-[#1e1d1d] text-gray-200")}>
                 {output ? output : <p className='text-gray-400'>Click on "Run Code" to see the output here</p>}
             </div>
         </>

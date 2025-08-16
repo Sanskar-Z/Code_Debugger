@@ -7,11 +7,11 @@ export default function Hero() {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url("https://png.pngtree.com/thumb_back/fh260/background/20240621/pngtree-rubber-duck-debugging-code-or-rubberducking-photo-illustration-image_15805385.jpg")`
       }}
     >
-      <div className="text-center flex flex-col gap-2">
+      <div className="text-center flex flex-col gap-2 justify-center bg-opacity-50">
         <h1 className="text-4xl font-black text-white tracking-tight">
           Code Debugger React Apps
         </h1>
-        <h2 className="text-base font-normal text-white">
+        <h2 className="text-base font-normal text-gray-200">
           Our debugger simplifies the process of identifying and resolving issues in your React applications, allowing you to focus on building great user experiences.
         </h2>
       </div>
